@@ -21,7 +21,13 @@
 </mat-form-field>
 }
 
-<button mat-flat-button (click)="getGrades()">Dohvati</button>
+<button
+  mat-flat-button
+  (click)="getGrades()"
+  [disabled]="!studentId || !subjectId"
+>
+  Dohvati
+</button>
 
 <div>
   @for (grade of grades$ | async; track grade) {

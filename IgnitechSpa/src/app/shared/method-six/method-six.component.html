@@ -21,7 +21,13 @@
 </mat-form-field>
 }
 
-<button mat-flat-button (click)="getAvgGrade()">Dohvati</button>
+<button
+  mat-flat-button
+  (click)="getAvgGrade()"
+  [disabled]="!studentId || !subjectId"
+>
+  Dohvati
+</button>
 
 @if (avgGrade$ | async; as avgGrade) {
 <div>{{ avgGrade }}</div>

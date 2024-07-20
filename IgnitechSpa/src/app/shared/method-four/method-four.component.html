@@ -23,7 +23,13 @@
 </mat-form-field>
 }
 
-<button mat-flat-button (click)="getTeacher()">Dohvati</button>
+<button
+  mat-flat-button
+  (click)="getTeacher()"
+  [disabled]="!studentId || !subjectId"
+>
+  Dohvati
+</button>
 
 @if (teacher$ | async; as teacher) {
 <div>{{ teacher.firstName + " " + teacher.lastName }}</div>

@@ -10,7 +10,9 @@
   </mat-select>
 </mat-form-field>
 
-<button mat-flat-button (click)="getStudents()">Dohvati</button>
+<button mat-flat-button (click)="getStudents()" [disabled]="!selectedTeacherId">
+  Dohvati
+</button>
 
 <div>
   @for (student of students$ | async; track student.id) {
