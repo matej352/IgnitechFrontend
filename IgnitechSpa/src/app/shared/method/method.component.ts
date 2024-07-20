@@ -73,6 +73,11 @@ export interface Student {
   studentCode: string;
 }
 
+export interface Grade {
+  value: number;
+  createdOn: string;
+}
+
 export interface SubjectModel {
   id: number;
   studentName: string;

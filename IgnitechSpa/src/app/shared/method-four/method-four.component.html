@@ -1,0 +1,30 @@
+<h4>
+  Dohvati profesora koji drži predavanje određenom studentu za određeni predmet
+</h4>
+<mat-form-field>
+  <mat-label>Student</mat-label>
+  <mat-select (selectionChange)="onStudentSelectionChange($event)">
+    @for (student of students$ | async; track student.id) {
+    <mat-option [value]="student.id">{{
+      student.firstName + " " + student.lastName
+    }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+
+@if (studentId) {
+<mat-form-field>
+  <mat-label>Predmet</mat-label>
+  <mat-select (selectionChange)="onSubjectSelectionChange($event)">
+    @for (subject of subjects$ | async; track subject.id) {
+    <mat-option [value]="subject.id">{{ subject.name }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+}
+
+<button mat-flat-button (click)="getTeacher()">Dohvati</button>
+
+@if (teacher$ | async; as teacher) {
+<div>{{ teacher.firstName + " " + teacher.lastName }}</div>
+}

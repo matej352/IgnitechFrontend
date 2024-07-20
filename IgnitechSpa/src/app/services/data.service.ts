@@ -40,29 +40,29 @@ export class DataService {
   }
 
   getTeacherByStudentAndSubject(
-    studentId: string,
-    subjectId: string
-  ): Observable<any> {
-    return this.http.get(
-      `${this.apiUrl}/students/${studentId}/subjects/${subjectId}/teacher`
+    studentId: number,
+    subjectId: number
+  ): Observable<Teacher> {
+    return this.http.get<Teacher>(
+      `${this.apiUrl}/api/teacher/student/${studentId}/subject/${subjectId}`
     );
   }
 
   getGradesByStudentAndSubject(
-    studentId: string,
-    subjectId: string
+    studentId: number,
+    subjectId: number
   ): Observable<any> {
     return this.http.get(
-      `${this.apiUrl}/students/${studentId}/subjects/${subjectId}/grades`
+      `${this.apiUrl}/api/grade/student/${studentId}/subject/${subjectId}`
     );
   }
 
   getAverageGradeByStudentAndSubject(
-    studentId: string,
-    subjectId: string
-  ): Observable<any> {
-    return this.http.get(
-      `${this.apiUrl}/students/${studentId}/subjects/${subjectId}/average-grade`
+    studentId: number,
+    subjectId: number
+  ): Observable<number> {
+    return this.http.get<number>(
+      `${this.apiUrl}/api/grade/student/${studentId}/subject/${subjectId}/avg`
     );
   }
 }

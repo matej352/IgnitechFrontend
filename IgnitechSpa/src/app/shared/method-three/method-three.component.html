@@ -14,6 +14,6 @@
 
 <div>
   @for (subject of subjects$ | async; track subject.id) {
-  <div>{{ subject.name + " (student: " + subject.studentName + ")" }}</div>
+  <div>{{ subject.name }}</div>
   }
 </div>

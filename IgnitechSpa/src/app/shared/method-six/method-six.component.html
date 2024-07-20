@@ -1,0 +1,28 @@
+<h4>Dohvati prosječnu ocjenu iz određenog predmeta za studenta</h4>
+<mat-form-field>
+  <mat-label>Student</mat-label>
+  <mat-select (selectionChange)="onStudentSelectionChange($event)">
+    @for (student of students$ | async; track student.id) {
+    <mat-option [value]="student.id">{{
+      student.firstName + " " + student.lastName
+    }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+
+@if (studentId) {
+<mat-form-field>
+  <mat-label>Predmet</mat-label>
+  <mat-select (selectionChange)="onSubjectSelectionChange($event)">
+    @for (subject of subjects$ | async; track subject.id) {
+    <mat-option [value]="subject.id">{{ subject.name }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+}
+
+<button mat-flat-button (click)="getAvgGrade()">Dohvati</button>
+
+@if (avgGrade$ | async; as avgGrade) {
+<div>{{ avgGrade }}</div>
+}
