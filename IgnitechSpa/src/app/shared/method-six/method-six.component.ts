@@ -31,7 +31,7 @@ export class MethodSixComponent {
 
   students$!: Observable<Student[]>;
   subjects$!: Observable<SubjectModel[]>;
-  avgGrade$!: Observable<number>;
+  avgGrade!: number;
 
   onStudentSelectionChange(event: any) {
     this.studentId = event.value;
@@ -58,9 +58,8 @@ export class MethodSixComponent {
   }
 
   getAvgGrade() {
-    this.avgGrade$ = this._dataService.getAverageGradeByStudentAndSubject(
-      this.studentId,
-      this.subjectId
-    );
+    this._dataService
+      .getAverageGradeByStudentAndSubject(this.studentId, this.subjectId)
+      .subscribe((avgGrade) => (this.avgGrade = avgGrade));
   }
 }

@@ -29,6 +29,6 @@
   Dohvati
 </button>
 
-@if (avgGrade$ | async; as avgGrade) {
+@if (avgGrade || avgGrade == 0) {
 <div>{{ avgGrade }}</div>
 }

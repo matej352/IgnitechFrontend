@@ -14,8 +14,13 @@
   Dohvati
 </button>
 
+@if ((students$ | async); as students) { @if(!students.length) {
+<div>Nema</div>
+} @else {
 <div>
-  @for (student of students$ | async; track student.id) {
+  @for (student of students; track student.id) {
   <div>{{ student.firstName + " " + student.lastName }}</div>
   }
 </div>
+
+} }

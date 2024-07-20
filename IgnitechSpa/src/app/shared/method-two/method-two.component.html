@@ -14,8 +14,13 @@
   Dohvati
 </button>
 
+@if ((subjects$ | async); as subjects) { @if(!subjects.length) {
+<div>Nema</div>
+} @else {
 <div>
-  @for (subject of subjects$ | async; track subject.id) {
+  @for (subject of subjects; track subject.id) {
   <div>{{ subject.name + " (student: " + subject.studentName + ")" }}</div>
   }
 </div>
+
+} }

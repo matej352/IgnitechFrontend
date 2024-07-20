@@ -29,8 +29,13 @@
   Dohvati
 </button>
 
+@if ((grades$ | async); as grades) { @if(!grades.length) {
+<div>Nema</div>
+} @else {
 <div>
-  @for (grade of grades$ | async; track grade) {
+  @for (grade of grades; track grade) {
   <div>{{ grade.value + " (" + (grade.createdOn | formatDate) + ")" }}</div>
   }
 </div>
+
+} }
