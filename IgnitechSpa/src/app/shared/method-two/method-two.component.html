@@ -1,0 +1,19 @@
+<h4>Dohvati sve predmete za određenog profesora</h4>
+<mat-form-field>
+  <mat-label>Profesor</mat-label>
+  <mat-select (selectionChange)="onSelectionChange($event)">
+    @for (teacher of teachers$ | async; track teacher.id) {
+    <mat-option [value]="teacher.id">{{
+      teacher.firstName + " " + teacher.lastName
+    }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+
+<button mat-flat-button (click)="getSubjects()">Dohvati</button>
+
+<div>
+  @for (subject of subjects$ | async; track subject.id) {
+  <div>{{ subject.name + " (student: " + subject.studentName + ")" }}</div>
+  }
+</div>
